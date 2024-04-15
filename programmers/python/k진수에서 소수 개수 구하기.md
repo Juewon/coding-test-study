@@ -37,20 +37,29 @@ def solution(n, k):
     convert = ''
     
     while n > 0:
+        # divmod = 주어준 두 숫자를 나눈 몫과 나머지를 반환
         n, mod = divmod(n, k)
+        # 나머지 mod가 문자열 앞쪽에 저장될수있게 만들기
         convert = str(mod) + convert
-        
+    
+    # 0을 기준으로 0을 제외한 문자 split
     convert = convert.split('0')
     
+    # convert의 요소를 가져와 con이 빈문자열이아니고
+    # is_prime함수가 1을 리턴하면 count 증가
     for con in convert:
         if con and is_prime(int(con)):
             count += 1
             
     return count
 
+# 소수 판별 함수
 def is_prime(num):
+    # num 2보다 작으면 0을 리턴
     if num < 2:
         return 0
+    # 2부터 num의 제곱근 + 1까지 나누기
+    # 나누어지면 0을 리턴, 그렇지 않으면 1을 리턴
     for i in range(2, int(num**0.5)+1):
         if num % i == 0:
             return 0
