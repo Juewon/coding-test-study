@@ -37,15 +37,17 @@ from collections import Counter
 
 # ex) participant = ["mislav", "stanko", "mislav", "ana"]
 #     completion = ["stanko", "ana", "mislav"] 
+
 def solution(participant, completion):
-    participant_count = Counter(participant)
     # participant_count = {'mislav' : 2, 'stanko' : 1, 'ana' : 1}
-    completion_count = Counter(completion)
+    participant_count = Counter(participant)
+
     # completion_count = {'stanko' : 1, 'ana' : 1, 'mislav' : 1}
-
-    not_completed = participant_count - completion_count
+    completion_count = Counter(completion)
+    
     # not_completed = {'mislav' : 1}
-
+    not_completed = participant_count - completion_count
+    
     # key의 값을 문자열로 변환 후 저장
     not_completed_str = ', '.join(list(not_completed.keys()))
 
